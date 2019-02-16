@@ -4,6 +4,8 @@ import edu.wpi.first.wpilibj.command.*;
 import frc.robot.*;
 
 public class ManualPneumaticsSystem extends Command {
+    public static final double DELTA = 2.5;
+
     public boolean extended = false;
 
     public ManualPneumaticsSystem() {
@@ -18,6 +20,10 @@ public class ManualPneumaticsSystem extends Command {
             Robot.pneumaticsSystem.retract();
         } else {
             Robot.pneumaticsSystem.stop();
+        }
+        
+        if(SubController.resetClaw()) {
+            RobotMap.servo.setAngle(0);
         }
     }
 
